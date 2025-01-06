@@ -1,13 +1,8 @@
-import {
-  HeroContainer,
-  FavoriteButtonContainer,
-  HeroInfo,
-  HeroThumbnail,
-  FavoritedButtonContainer,
-} from "./styles";
+import { HeroContainer, HeroInfo, HeroThumbnail } from "./styles";
 import { Link } from "react-router";
 
 import { useState } from "react";
+import { FavoriteIcon } from "../FavoriteIcon";
 
 export type HeroProps = {
   id: number;
@@ -26,9 +21,9 @@ type Props = {
 export function Hero({ hero, onFavoriteHero }: Props) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
-  const handleFavoriteHero = () => {
-    setIsFavorite((isFavorite) => (isFavorite = !isFavorite));
+  const hanleOnFavoriteChange = () => {
     onFavoriteHero(hero.id);
+    setIsFavorite((isFavorite) => (isFavorite = !isFavorite));
   };
 
   return (
@@ -45,11 +40,11 @@ export function Hero({ hero, onFavoriteHero }: Props) {
         <Link to={`/hero/${hero.id}`}>
           <span>{hero.name}</span>
         </Link>
-        {isFavorite ? (
-          <FavoritedButtonContainer onClick={handleFavoriteHero} />
-        ) : (
-          <FavoriteButtonContainer onClick={handleFavoriteHero} />
-        )}
+        <FavoriteIcon
+          active={isFavorite}
+          loading={false}
+          onClickAction={hanleOnFavoriteChange}
+        />
       </HeroInfo>
     </HeroContainer>
   );
