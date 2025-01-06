@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import { useContext, useEffect, useState } from "react";
 import { FavoriteIcon } from "../FavoriteIcon";
-import { FavoritesHeroesContext } from "../../pages/Home";
+import { FavoriteHeroesContext } from "../../contexts/FavoriteHeroesContext";
 
 export type HeroProps = {
   id: number;
@@ -20,7 +20,7 @@ type Props = {
 
 export function Hero({ hero }: Props) {
   const { favoritesHeroes, addHeroAsFavorite, removeHeroAsFavorite } =
-    useContext(FavoritesHeroesContext);
+    useContext(FavoriteHeroesContext);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const hanleOnFavoriteChange = () => {
