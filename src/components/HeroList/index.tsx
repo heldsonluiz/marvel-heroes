@@ -6,14 +6,10 @@ type Props = {
 };
 
 export function HeroList({ heroes }: Props) {
-  const favoriteHero = (heroId: number) => {
-    console.log(heroId);
-  };
-
   return (
     <HeroListContainer>
       {heroes.map((hero) => {
-        return <Hero key={hero.id} hero={hero} onFavoriteHero={favoriteHero} />;
+        return <Hero key={hero.id} hero={hero} />;
       })}
     </HeroListContainer>
   );

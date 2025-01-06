@@ -1,8 +1,9 @@
 import { HeroContainer, HeroInfo, HeroThumbnail } from "./styles";
 import { Link } from "react-router";
 
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FavoriteIcon } from "../FavoriteIcon";
+import { FavoritesHeroesContext } from "../../pages/Home";
 
 export type HeroProps = {
   id: number;
@@ -15,16 +16,26 @@ export type HeroProps = {
 
 type Props = {
   hero: HeroProps;
-  onFavoriteHero: (id: number) => void;
 };
 
-export function Hero({ hero, onFavoriteHero }: Props) {
+export function Hero({ hero }: Props) {
+  const { favoritesHeroes, addHeroAsFavorite, removeHeroAsFavorite } =
+    useContext(FavoritesHeroesContext);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const hanleOnFavoriteChange = () => {
-    onFavoriteHero(hero.id);
-    setIsFavorite((isFavorite) => (isFavorite = !isFavorite));
+    if (isFavorite) removeHeroAsFavorite(hero);
+    else addHeroAsFavorite(hero);
+
+    setIsFavorite((isFavorite) => {
+      return isFavorite ? false : favoritesHeroes.length < 5;
+    });
   };
+
+  useEffect(() => {
+    if (favoritesHeroes.findIndex((f) => f.id === hero.id) >= 0)
+      setIsFavorite(true);
+  }, [favoritesHeroes, hero.id]);
 
   return (
     <HeroContainer>
