@@ -6,10 +6,11 @@ export const ToggleIconContainer = styled.div`
   width: 80px;
   height: 40px;
   cursor: pointer;
+  align-items: center;
 
   img {
-    width: 80px;
-    height: 40px;
+    min-width: 80px;
+    min-height: 40px;
   }
 `;
 

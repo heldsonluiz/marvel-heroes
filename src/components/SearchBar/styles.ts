@@ -2,18 +2,26 @@ import styled from "styled-components";
 
 export const SearchContainer = styled.div`
   display: flex;
-  margin-block: 30px;
+  flex-direction: column;
   width: 100%;
+`;
+
+export const SearchContainerForm = styled.form`
+  display: flex;
   justify-content: center;
 `;
+
 export const LabelSearchContainer = styled.label`
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 90%;
   position: relative;
   color: ${(props) => props.theme["red-300"]};
 `;
 export const SearchInputContainer = styled.input`
-  width: 50rem;
+  width: 100%;
+  display: flex;
   background: ${(props) => props.theme["red-100"]};
   padding: 20px;
   border: 0;

@@ -4,7 +4,6 @@ export const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-width: 15rem;
 `;
 
 export const HeroThumbnail = styled.div`
@@ -12,7 +11,8 @@ export const HeroThumbnail = styled.div`
   img {
     border-bottom: 4px solid ${(props) => props.theme["red-500"]};
     aspect-ratio: 1/1;
-    width: 100%;
+    min-width: 132px;
+    max-width: 100%;
   }
 `;
 
