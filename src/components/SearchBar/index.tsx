@@ -4,20 +4,27 @@ import {
   LabelSearchContainer,
   SearchInputIcon,
   SearchInputContainer,
+  SearchContainerForm,
 } from "./styles";
 import { SearchContext } from "../../contexts/SearchContext";
 import searchIcon from "../../assets/ic_busca.svg";
 
 export function SearchBar() {
-  const { heroName, updateSearchTerm } = useContext(SearchContext);
+  const { heroName, updateSearchTerm, handleExecuteSearch } =
+    useContext(SearchContext);
 
   const handleOnChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     updateSearchTerm(event.target.value);
   };
 
+  const handleOnSubmitForm = (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    handleExecuteSearch();
+  };
+
   return (
     <SearchContainer>
-      <form>
+      <SearchContainerForm onSubmit={handleOnSubmitForm}>
         <LabelSearchContainer htmlFor="hero-name">
           <SearchInputIcon src={searchIcon} alt="" />
           <SearchInputContainer
@@ -27,7 +34,7 @@ export function SearchBar() {
             onChange={handleOnChangeName}
           />
         </LabelSearchContainer>
-      </form>
+      </SearchContainerForm>
     </SearchContainer>
   );
 }

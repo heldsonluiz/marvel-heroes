@@ -25,7 +25,7 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { FavoriteHeroesContext } from "../../contexts/FavoriteHeroesContext";
 
 export function Home() {
-  const { heroName } = useContext(SearchContext);
+  const { heroName, executeSearch } = useContext(SearchContext);
   const { isLoading, setLoading } = useContext(LoadingContext);
   const { favoritesHeroes } = useContext(FavoriteHeroesContext);
 
@@ -35,7 +35,10 @@ export function Home() {
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
   const requestCharacters = useCallback(async () => {
+    if (heroes.length && !executeSearch) return;
+
     try {
+      setLoading(true);
       const searchForName = heroName ? `nameStartsWith=${heroName}` : "";
       const orderByName = orderAZ ? `&orderBy=name` : "&orderBy=-name";
 
@@ -49,7 +52,7 @@ export function Home() {
     } catch (error) {
       console.log(error);
     }
-  }, [heroName, orderAZ]);
+  }, [orderAZ, executeSearch]);
 
   const onChangeOrderAZ = () => {
     setLoading(true);
@@ -65,6 +68,10 @@ export function Home() {
   const filteredHeroList: HeroProps[] = showOnlyFavorites
     ? favoritesHeroes
     : heroes;
+
+  const filteredTotalHeroes = showOnlyFavorites
+    ? filteredHeroList.length
+    : totalHeroes;
 
   useEffect(() => {
     requestCharacters();
@@ -82,14 +89,14 @@ export function Home() {
             <span>
               {isLoading
                 ? "Buscando heróis"
-                : `Encontrados ${totalHeroes} heróis`}
+                : `Encontrados ${filteredTotalHeroes} heróis`}
             </span>
           </ResultsFound>
 
           <OrderAndFilterContainer>
             <OrderControllerContainer>
               <img src={heroiIcon} alt="" />
-              Ordenar por nome - A/Z
+              <span>Ordenar por nome - A/Z</span>
               <ToggleIcon
                 active={orderAZ}
                 onToggleChange={onChangeOrderAZ}
