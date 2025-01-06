@@ -23,10 +23,9 @@ jobs:
         working-directory: src/
         
       - name: Lint Action
-        uses: wearerequired/lint-action@v2.3.0
+        uses: jrcligny/run-eslint-action@v1
         with:
-          eslint: true
-          prettier: true
-          eslint_extensions: ts,tsx
-          continue_on_error: false
-          check_name: Linter Annotations
+          # Specify the files to lint. This input is optional (default: `**/*.js`)
+          pattern: 'src/**/*.ts'
+          # Specify the ESLint configuration file. This input is optional (default: none)
+          overrideConfigFile: src/eslint.config.js
