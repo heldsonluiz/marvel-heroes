@@ -5,8 +5,7 @@ export const NotFoundContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  transform: translateY(-200px);
-  margin: 50% auto 0;
+  transform: translateY(150%);
   h1 {
     font-size: 10rem;
     font-weight: 900;
@@ -33,5 +32,9 @@ export const NotFoundContainer = styled.div`
     &:hover {
       color: ${(props) => props.theme["gray-500"]};
     }
+  }
+
+  @media (max-width: 662px) {
+    transform: translateY(50%);
   }
 `;

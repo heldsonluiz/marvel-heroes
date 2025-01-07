@@ -15,6 +15,12 @@ export const HeroHeader = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 `;
 
 export const HeroInfoContainer = styled.div`
@@ -135,8 +141,9 @@ export const HeroLastComics = styled.div`
 
 export const ComicsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(133px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(133px, 133px));
   gap: 4rem;
+  justify-content: center;
 `;
 
 export const ComicsGridItem = styled.div`

@@ -7,4 +7,5 @@ export const HeroListContainer = styled.div`
   gap: 40px;
   padding-bottom: 150px;
   justify-items: center;
+  justify-content: center;
 `;
