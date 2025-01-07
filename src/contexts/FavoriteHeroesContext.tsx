@@ -15,8 +15,8 @@ interface FavoriteHeroesContextProviderProps {
   children: ReactNode;
 }
 
-export function FavoriteHeroesContextProvider({
-  children,
+export function FavoriteHeroesContextProvider ({
+  children
 }: FavoriteHeroesContextProviderProps) {
   const [favoritesHeroes, setFavoriteHeroes] = useState<HeroProps[]>([]);
 
@@ -36,7 +36,7 @@ export function FavoriteHeroesContextProvider({
       value={{
         favoritesHeroes,
         addHeroAsFavorite,
-        removeHeroAsFavorite,
+        removeHeroAsFavorite
       }}
     >
       {children}

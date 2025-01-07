@@ -1,7 +1,7 @@
 import logo from "../../assets/logo.svg";
 import { HeaderContainer } from "./styles";
 
-export function HomeHeader() {
+export function HomeHeader () {
   return (
     <HeaderContainer>
       <img src={logo} alt="" />

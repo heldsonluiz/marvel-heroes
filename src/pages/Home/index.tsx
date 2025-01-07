@@ -4,7 +4,7 @@ import {
   OrderAndFilterContainer,
   OrderControllerContainer,
   ResultsFound,
-  SortingContainer,
+  SortingContainer
 } from "./styles";
 
 import heroiIcon from "../../assets/ic_heroi.svg";
@@ -24,7 +24,7 @@ import { SearchContext } from "../../contexts/SearchContext";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import { FavoriteHeroesContext } from "../../contexts/FavoriteHeroesContext";
 
-export function Home() {
+export function Home () {
   const { heroName, executeSearch } = useContext(SearchContext);
   const { isLoading, setLoading } = useContext(LoadingContext);
   const { favoritesHeroes } = useContext(FavoriteHeroesContext);

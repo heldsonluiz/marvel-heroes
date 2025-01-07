@@ -9,5 +9,5 @@ export const defaultTheme = {
 
   'red-100': '#FDECEC',
   'red-300': '#FA7C7C',
-  'red-500': '#FF1510',
+  'red-500': '#FF1510'
 }

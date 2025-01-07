@@ -1,5 +1,5 @@
 import { FooterContainer } from "./styles";
 
-export function Footer() {
+export function Footer () {
   return <FooterContainer />;
 }

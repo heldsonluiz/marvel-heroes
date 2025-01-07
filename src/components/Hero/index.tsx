@@ -18,7 +18,7 @@ type Props = {
   hero: HeroProps;
 };
 
-export function Hero({ hero }: Props) {
+export function Hero ({ hero }: Props) {
   const { favoritesHeroes, addHeroAsFavorite, removeHeroAsFavorite } =
     useContext(FavoriteHeroesContext);
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
@@ -27,9 +27,7 @@ export function Hero({ hero }: Props) {
     if (isFavorite) removeHeroAsFavorite(hero);
     else addHeroAsFavorite(hero);
 
-    setIsFavorite((isFavorite) => {
-      return isFavorite ? false : favoritesHeroes.length < 5;
-    });
+    setIsFavorite((isFavorite) => isFavorite ? false : favoritesHeroes.length < 5);
   };
 
   useEffect(() => {

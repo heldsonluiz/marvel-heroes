@@ -4,12 +4,12 @@ import {
   LabelSearchContainer,
   SearchInputIcon,
   SearchInputContainer,
-  SearchContainerForm,
+  SearchContainerForm
 } from "./styles";
 import { SearchContext } from "../../contexts/SearchContext";
 import searchIcon from "../../assets/ic_busca.svg";
 
-export function SearchBar() {
+export function SearchBar () {
   const { heroName, updateSearchTerm, handleExecuteSearch } =
     useContext(SearchContext);
 

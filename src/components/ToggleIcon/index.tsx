@@ -8,10 +8,10 @@ interface ToggleIconProps {
   onToggleChange: () => void;
 }
 
-export function ToggleIcon({
+export function ToggleIcon ({
   active,
   loading = false,
-  onToggleChange,
+  onToggleChange
 }: ToggleIconProps) {
   const handleOnClickToggleIcon = () => {
     if (loading) return;
