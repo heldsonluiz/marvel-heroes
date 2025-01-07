@@ -23,9 +23,4 @@ jobs:
         working-directory: src/
         
       - name: Lint Action
-        uses: jrcligny/run-eslint-action@v1
-        with:
-          # Specify the files to lint. This input is optional (default: `**/*.js`)
-          pattern: 'src/**/*.ts'
-          # Specify the ESLint configuration file. This input is optional (default: none)
-          overrideConfigFile: src/eslint.config.js
+        run: eslint .
