@@ -21,6 +21,6 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
         working-directory: src/
-        
+
       - name: Lint Action
         run: npm run lint

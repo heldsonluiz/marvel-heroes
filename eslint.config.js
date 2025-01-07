@@ -25,7 +25,15 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-empty-object-type": "off",
       "react-refresh/only-export-components": 'off',
-      "react-hooks/exhaustive-deps":'off'
+      "react-hooks/exhaustive-deps":'off',
+      "no-unreachable": 'error',
+      "arrow-body-style": 'error',
+      "camelcase": 'error',
+      "eqeqeq":'error',
+      "comma-dangle": 'error',
+      "semi-spacing": 'error',
+      "space-before-function-paren": 'error',
+      "keyword-spacing":'error',
     },
   },
 )
