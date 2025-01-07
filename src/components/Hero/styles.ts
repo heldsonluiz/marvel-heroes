@@ -11,8 +11,7 @@ export const HeroThumbnail = styled.div`
   img {
     border-bottom: 4px solid ${(props) => props.theme["red-500"]};
     aspect-ratio: 1/1;
-    min-width: 132px;
-    max-width: 100%;
+    width: 250px;
   }
 `;
 
