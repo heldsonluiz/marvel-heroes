@@ -25,7 +25,7 @@
 - (Em breve) Paginação de resultados
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/heldsonluiz/marve-heroes/refs/heads/main/assets/prints/screens.png" alt="Marvel Heroes Screens Thumbnail">
+<img src="https://raw.githubusercontent.com/heldsonluiz/marvel-heroes/refs/heads/main/assets/prints/screens.png" alt="Marvel Heroes Screens Thumbnail">
 </p>
 
 ---
