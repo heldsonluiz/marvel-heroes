@@ -9,8 +9,8 @@ export const LoadingContext = createContext({} as LoadingContextProps);
 interface LoadingContextProviderProps {
   children: ReactNode;
 }
-export function LoadingContextProvider({
-  children,
+export function LoadingContextProvider ({
+  children
 }: LoadingContextProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,7 +22,7 @@ export function LoadingContextProvider({
     <LoadingContext.Provider
       value={{
         isLoading,
-        setLoading,
+        setLoading
       }}
     >
       {children}

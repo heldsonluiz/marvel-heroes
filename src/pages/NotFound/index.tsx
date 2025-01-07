@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { NotFoundContainer } from "./styles";
 
-export function NotFound() {
+export function NotFound () {
   return (
     <NotFoundContainer>
       <h1>Oh no!</h1>

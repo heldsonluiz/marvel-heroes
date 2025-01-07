@@ -5,12 +5,10 @@ type Props = {
   heroes: HeroProps[];
 };
 
-export function HeroList({ heroes }: Props) {
+export function HeroList ({ heroes }: Props) {
   return (
     <HeroListContainer>
-      {heroes.map((hero) => {
-        return <Hero key={hero.id} hero={hero} />;
-      })}
+      {heroes.map((hero) => <Hero key={hero.id} hero={hero} />)}
     </HeroListContainer>
   );
 }

@@ -14,7 +14,7 @@ import {
   ComicsGrid,
   ComicsGridItem,
   HeroHeader,
-  HeroDetailHeader,
+  HeroDetailHeader
 } from "./styles";
 
 import logoImage from "../../assets/logo_menor.svg";
@@ -59,7 +59,7 @@ interface ComicProps {
   };
 }
 
-export function Hero() {
+export function Hero () {
   const { heroId } = useParams();
   const [hero, setHero] = useState<HeroProps>();
   const [lastComics, setLastComics] = useState<ComicProps[]>([]);
@@ -75,9 +75,7 @@ export function Hero() {
     if (isFavorite) removeHeroAsFavorite(hero);
     else addHeroAsFavorite(hero);
 
-    setIsFavorite((isFavorite) => {
-      return isFavorite ? false : favoritesHeroes.length < 5;
-    });
+    setIsFavorite((isFavorite) => isFavorite ? false : favoritesHeroes.length < 5);
   };
 
   const fetchHero = async () => {
@@ -170,8 +168,7 @@ export function Hero() {
           <HeroLastComics>
             <h2>Últimos Lançamentos</h2>
             <ComicsGrid>
-              {lastComics.map((comic) => {
-                return (
+              {lastComics.map((comic) => (
                   <ComicsGridItem key={comic.id}>
                     <img
                       src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
@@ -179,8 +176,7 @@ export function Hero() {
                     />
                     <span>{comic.title}</span>
                   </ComicsGridItem>
-                );
-              })}
+                ))}
             </ComicsGrid>
           </HeroLastComics>
         </HeroInfoContainer>

@@ -12,8 +12,8 @@ export const SearchContext = createContext({} as SearchContextType);
 interface SearchContextProviderProps {
   children: ReactNode;
 }
-export function SearchContextProvider({
-  children,
+export function SearchContextProvider ({
+  children
 }: SearchContextProviderProps) {
   const [heroName, setHeroName] = useState("");
   const [executeSearch, setExecuteSearch] = useState(false);
@@ -37,7 +37,7 @@ export function SearchContextProvider({
         heroName,
         executeSearch,
         updateSearchTerm,
-        handleExecuteSearch,
+        handleExecuteSearch
       }}
     >
       {children}

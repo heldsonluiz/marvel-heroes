@@ -3,7 +3,7 @@ import {
   FavoriteButtonContainerOff,
   FavoriteButtonContainerOn,
   FavoriteContainer,
-  FavoriteLabel,
+  FavoriteLabel
 } from "./styles";
 
 interface FavoriteIconProps {
@@ -13,11 +13,11 @@ interface FavoriteIconProps {
   label?: string;
 }
 
-export function FavoriteIcon({
+export function FavoriteIcon ({
   active,
   loading,
   label,
-  onClickAction,
+  onClickAction
 }: FavoriteIconProps) {
   const handleClickAction = () => {
     if (loading) return;

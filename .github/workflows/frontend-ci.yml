@@ -18,11 +18,9 @@ jobs:
           node-version: 23.x
           cache: 'npm'
 
+      - name: Install Node.js dependencies
+        run: npm ci
+        working-directory: src/
+
       - name: Lint Action
-        uses: wearerequired/lint-action@v2.3.0
-        with:
-          eslint: true
-          prettier: true
-          eslint_extensions: ts,tsx
-          continue_on_error: false
-          check_name: Linter Annotations
+        run: npm run lint
