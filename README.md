@@ -12,6 +12,7 @@
 
 
 **Marvel Heroes** é um website que permite que você busque informações dos seus heróis preferidos do universo MARVEL.
+Você pode ver a versão no ar [aqui](https://marvel-heroes.heldsonluiz.dev.br)
 
 ---
 
