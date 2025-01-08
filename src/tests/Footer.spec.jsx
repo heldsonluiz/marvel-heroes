@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import { Footer } from "../components/Footer"
 
-describe("Test Footer Component", () => {
+describe("Tests for Footer Component", () => {
   it("should render the footer component correclty", () => {
     render(<Footer/>)
 

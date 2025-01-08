@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { FavoriteIcon } from "../components/FavoriteIcon";
 
-describe("FavoriteIcon Component", () => {
-  it("renders the label correctly", () => {
+describe("Tests for FavoriteIcon Component", () => {
+  it("should render the label correctly", () => {
     render(
       <FavoriteIcon
         active={false}
@@ -15,7 +15,7 @@ describe("FavoriteIcon Component", () => {
     expect(screen.getByText("Favorite")).toBeInTheDocument();
   });
 
-  it("displays the correct button state when active", () => {
+  it("should display the correct button state when active", () => {
     render(
       <FavoriteIcon
         active={true}
@@ -28,7 +28,7 @@ describe("FavoriteIcon Component", () => {
     expect(button).toHaveAttribute("data-active", "true");
   });
 
-  it("displays the correct button state when not active", () => {
+  it("should display the correct button state when not active", () => {
     render(
       <FavoriteIcon
         active={false}
@@ -41,7 +41,7 @@ describe("FavoriteIcon Component", () => {
     expect(button).toHaveAttribute("data-active", "false");
   });
 
-  it("calls the onClickAction when clicked and not loading", () => {
+  it("should execute onClickAction when clicked and not loading", () => {
     const onClickAction = jest.fn();
 
     render(
@@ -58,7 +58,7 @@ describe("FavoriteIcon Component", () => {
     expect(onClickAction).toHaveBeenCalledTimes(1);
   });
 
-  it("does not call onClickAction when clicked while loading", () => {
+  it("should not call onClickAction when clicked while loading", () => {
     const onClickAction = jest.fn();
 
     render(
@@ -75,7 +75,7 @@ describe("FavoriteIcon Component", () => {
     expect(onClickAction).not.toHaveBeenCalled();
   });
 
-  it("handles both active and loading states correctly", () => {
+  it("should handle both active and loading states correctly", () => {
     const { rerender } = render(
       <FavoriteIcon
         active={false}

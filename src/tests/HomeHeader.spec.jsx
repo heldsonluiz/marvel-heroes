@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import {HomeHeader} from "../components/HomeHeader"
 
-describe("HomeHeader Component", () => {
-  it("renders the logo image with the correct source", () => {
+describe("Tests for HomeHeader Component", () => {
+  it("should show the logo image with the correct source", () => {
     render(<HomeHeader source={"test-url"}/>);
 
     const logoImage = screen.getByTestId("header-image");
@@ -11,7 +11,7 @@ describe("HomeHeader Component", () => {
     expect(logoImage).toHaveAttribute("alt", "");
   });
 
-  it("renders the main heading", () => {
+  it("should show the main heading", () => {
     render(<HomeHeader />);
 
     const heading = screen.getByRole("heading", { level: 1 });
@@ -19,7 +19,7 @@ describe("HomeHeader Component", () => {
     expect(heading).toHaveTextContent("Explore o universo");
   });
 
-  it("renders the description text", () => {
+  it("should show the description text", () => {
     render(<HomeHeader />);
 
     const description = screen.getByText(/Mergulhe no domínio deslumbrante/i);

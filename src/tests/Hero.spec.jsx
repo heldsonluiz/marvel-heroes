@@ -20,8 +20,8 @@ const renderWithContext = (ui, contextValue) => {
   );
 };
 
-describe("Hero Component", () => {
-  it("renders the hero information correctly", () => {
+describe("Tests for Hero Component", () => {
+  it("should render the hero information correctly", () => {
     renderWithContext(<Hero hero={mockHero} />, {
       favoritesHeroes: [],
       addHeroAsFavorite: jest.fn(),
@@ -37,7 +37,7 @@ describe("Hero Component", () => {
     expect(image).toHaveAttribute("alt", "");
   });
 
-  it("handles adding a hero as favorite", () => {
+  it("should add a hero as favorite", () => {
     const addHeroAsFavorite = jest.fn();
     const contextValue = {
       favoritesHeroes: [],
@@ -53,7 +53,7 @@ describe("Hero Component", () => {
     expect(addHeroAsFavorite).toHaveBeenCalledWith(mockHero);
   });
 
-  it("handles removing a hero from favorites", () => {
+  it("should remove a hero from favorites", () => {
     const removeHeroAsFavorite = jest.fn();
     const contextValue = {
       favoritesHeroes: [mockHero],
@@ -69,7 +69,7 @@ describe("Hero Component", () => {
     expect(removeHeroAsFavorite).toHaveBeenCalledWith(mockHero);
   });
 
-  it("shows the favorite icon as active when the hero is in favorites", () => {
+  it("should show the favorite icon as active when the hero is in favorites", () => {
     renderWithContext(<Hero hero={mockHero} />, {
       favoritesHeroes: [mockHero],
       addHeroAsFavorite: jest.fn(),
@@ -80,7 +80,7 @@ describe("Hero Component", () => {
     expect(favoriteIcon).toHaveAttribute("data-active", "true"); // Assumindo que o ícone usa data-active
   });
 
-  it("updates the favorite state based on the context", () => {
+  it("should update the favorite state based on the context", () => {
     const { rerender } = renderWithContext(<Hero hero={mockHero} />, {
       favoritesHeroes: [],
       addHeroAsFavorite: jest.fn(),
