@@ -1,5 +1,5 @@
 import { FooterContainer } from "./styles";
 
 export function Footer () {
-  return <FooterContainer />;
+  return <FooterContainer data-testid="footer"/>;
 }
