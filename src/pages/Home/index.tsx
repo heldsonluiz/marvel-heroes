@@ -8,6 +8,7 @@ import {
 } from "./styles";
 
 import heroiIcon from "../../assets/ic_heroi.svg";
+import logo from "../../assets/logo.svg";
 
 import { useCallback, useContext, useEffect, useState } from "react";
 import { api, authenticate } from "../../services/api";
@@ -79,7 +80,7 @@ export function Home () {
 
   return (
     <HomeContainer>
-      <HomeHeader />
+      <HomeHeader source={logo}/>
 
       <SearchBar />
 
