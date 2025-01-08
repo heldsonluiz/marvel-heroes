@@ -17,24 +17,21 @@ export function SearchBar () {
     updateSearchTerm(event.target.value);
   };
 
-  const handleOnSubmitForm = (event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   return (
-    <SearchContainer>
-      <SearchContainerForm onSubmit={handleOnSubmitForm}>
+    <SearchContainer data-testid="search-container">
+      <SearchContainerForm data-testid="search-form">
         <LabelSearchContainer htmlFor="hero-name">
-          <SearchInputIcon src={searchIcon} alt="" />
+          <SearchInputIcon src={searchIcon} alt="" data-testid="search-input-icon"/>
           <SearchInputContainer
             id="name"
             value={heroName}
             placeholder="Procure por heróis"
             onChange={handleOnChangeName}
+            data-testid="search-input"
           />
         </LabelSearchContainer>
       </SearchContainerForm>
-      <span>* Busque por heróis que iniciam com o nome digitado, incluindo caracteres especiais</span>
+      <span data-testid="search-tip">* Busque por heróis que iniciam com o nome digitado, incluindo caracteres especiais</span>
     </SearchContainer>
   );
 }
