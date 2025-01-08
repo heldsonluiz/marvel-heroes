@@ -46,7 +46,7 @@ export const HeroInfo = styled.div`
 `;
 
 export const HeroDetails = styled.div`
-  max-width: 50%;
+  width: 50%;
 
   h1 {
     font-size: 2rem;
@@ -63,7 +63,7 @@ export const HeroDetails = styled.div`
   }
 
   @media (max-width: 560px) {
-    max-width: 100%;
+    width: 100%;
   }
 `;
 

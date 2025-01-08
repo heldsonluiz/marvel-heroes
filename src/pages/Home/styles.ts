@@ -72,3 +72,27 @@ export const OrderControllerContainer = styled.div`
     height: 30px;
   }
 `;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-block: 16px;
+  font-size: 0.875rem;
+  font-weight: bolder;
+  color: ${(props) => props.theme["gray-300"]};
+  align-items: center;
+  margin-bottom: 32px;
+`;
+
+export const PaginationLinks = styled.div<{ $disabled: boolean }>`
+  cursor: ${(props) => (props.$disabled ? "not-allowed" : "pointer")};
+  background-color: ${(props) => props.theme["red-100"]};
+  padding: 16px;
+  border-radius: 50%;
+  font-weight: bolder;
+  color: ${(props) => props.theme["gray-500"]};
+
+  &:hover {
+    color: ${(props) => props.theme["red-300"]};
+  }
+`;

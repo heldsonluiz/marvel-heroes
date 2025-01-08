@@ -10,7 +10,7 @@ import { SearchContext } from "../../contexts/SearchContext";
 import searchIcon from "../../assets/ic_busca.svg";
 
 export function SearchBar () {
-  const { heroName, updateSearchTerm, handleExecuteSearch } =
+  const { heroName, updateSearchTerm } =
     useContext(SearchContext);
 
   const handleOnChangeName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +19,6 @@ export function SearchBar () {
 
   const handleOnSubmitForm = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleExecuteSearch();
   };
 
   return (
@@ -35,6 +34,7 @@ export function SearchBar () {
           />
         </LabelSearchContainer>
       </SearchContainerForm>
+      <span>* Busque por heróis que iniciam com o nome digitado, incluindo caracteres especiais</span>
     </SearchContainer>
   );
 }

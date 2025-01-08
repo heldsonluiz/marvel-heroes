@@ -4,6 +4,15 @@ export const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  border: 2px solid transparent;
+  padding: 4px;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    transform: scale(110%);
+
+    box-shadow: 0px 4px 28px -14px rgba(0, 0, 0, 0.75);
+  }
 `;
 
 export const HeroThumbnail = styled.div`
@@ -11,8 +20,7 @@ export const HeroThumbnail = styled.div`
   img {
     border-bottom: 4px solid ${(props) => props.theme["red-500"]};
     aspect-ratio: 1/1;
-    min-width: 132px;
-    max-width: 100%;
+    width: 250px;
   }
 `;
 

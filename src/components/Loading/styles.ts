@@ -5,5 +5,5 @@ export const LoadingContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 50px;
 `;
