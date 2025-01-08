@@ -7,8 +7,8 @@ type Props = {
 
 export function HeroList ({ heroes }: Props) {
   return (
-    <HeroListContainer>
-      {heroes.map((hero) => <Hero key={hero.id} hero={hero} />)}
+    <HeroListContainer data-testid="herolist-container">
+      {heroes.map((hero) => <Hero key={hero.id} hero={hero} data-testid="hero-container"/>)}
     </HeroListContainer>
   );
 }
