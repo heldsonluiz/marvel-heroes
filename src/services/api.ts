@@ -11,7 +11,7 @@ const message = currentTime + privateKey! + publicKey;
 const hash = md5(message);
 
 export const api = axios.create({
-  baseURL: `${baseUrl}`,
+  baseURL: `${baseUrl}`
 });
 
 export const authenticate = () =>
