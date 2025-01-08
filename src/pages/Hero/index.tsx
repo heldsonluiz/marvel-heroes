@@ -169,14 +169,14 @@ export function Hero () {
             <h2>Últimos Lançamentos</h2>
             <ComicsGrid>
               {lastComics.map((comic) => (
-                  <ComicsGridItem key={comic.id}>
-                    <img
-                      src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      alt=""
-                    />
-                    <span>{comic.title}</span>
-                  </ComicsGridItem>
-                ))}
+                <ComicsGridItem key={comic.id}>
+                  <img
+                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                    alt=""
+                  />
+                  <span>{comic.title}</span>
+                </ComicsGridItem>
+              ))}
             </ComicsGrid>
           </HeroLastComics>
         </HeroInfoContainer>
