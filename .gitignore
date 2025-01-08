@@ -25,4 +25,3 @@ dist-ssr
 
 .nvmrc
 .env
-vite-env-mock.js
