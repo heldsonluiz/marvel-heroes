@@ -44,8 +44,6 @@ export function Home () {
   const [currentPage, setCurrentPage] = useState(78)
   const [totalPages, setTotalPages] = useState(0)
 
-  const requestCharacters = useCallback(async () => {
-
   const [sortedHeroes, setSortedHeroes] = useState<HeroProps[]>([])
 
   const requestCharacters = useCallback(async () => {
