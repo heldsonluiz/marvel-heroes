@@ -75,11 +75,11 @@ Você pode [acessar o código fonte do projeto](https://github.com/heldsonluiz/m
    ```
 <br/>
 
-4. Faça uma cópia do arquivo `.env.exemple` na raiz do seu projeto renomeando para `.env`.
+4. Faça uma cópia do arquivo `.env.exemple` e de `vite-env-mock.js.example` na raiz do seu projeto renomeando para `.env` e `vite-env-mock.js` respectivamente.
 
 <br/>
 
-5. Configure as suas chaves públicas '(VITE_API_KEY_PUBLIC) e privada (VITE_API_KEY_PRIVATE) dentro do arquivo `.env`. Salve as alterações.
+5. Configure as suas chaves públicas '(VITE_API_KEY_PUBLIC) e privada (VITE_API_KEY_PRIVATE) dentro do arquivo `.env` e do arquivo `vite-env-mock.js`. Salve as alterações.
    ```
    VITE_API_KEY_PUBLIC=YOUR_PUBLIC_API_KEY
    VITE_API_KEY_PRIVATE=YOUR_PRIVATE_API_KEY
