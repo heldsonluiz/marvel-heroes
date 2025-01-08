@@ -44,6 +44,8 @@ export function Home () {
   const [currentPage, setCurrentPage] = useState(78)
   const [totalPages, setTotalPages] = useState(0)
 
+  const requestCharacters = useCallback(async () => {
+
   const [sortedHeroes, setSortedHeroes] = useState<HeroProps[]>([])
 
   const requestCharacters = useCallback(async () => {
@@ -53,6 +55,7 @@ export function Home () {
       const searchForName = heroName ? `nameStartsWith=${encodeURIComponent(heroName)}` : "";
       const orderByName = orderAZ ? `&orderBy=name` : "&orderBy=-name";
       const offSetValue = `&offset=${limit * (currentPage - 1)}`
+
 
       const { data } = await api.get(
         `/characters?${searchForName}${orderByName}${offSetValue}${authenticate()}&limit=20`
@@ -68,7 +71,9 @@ export function Home () {
       setTotalHeroes(0);
       console.log(error);
     }
+
   }, [orderAZ, searchTerm, currentPage]);
+
 
   const onChangeOrderAZ = () => {
     setLoading(true);
@@ -120,6 +125,7 @@ export function Home () {
     requestCharacters();
   }, [orderAZ, requestCharacters]);
 
+
   useEffect(() => {
     const totalPages = Math.ceil(totalHeroes / limit)
     setTotalPages(totalPages)
@@ -132,6 +138,7 @@ export function Home () {
     }, 500),
     []
   );
+
   useEffect(() => {
     refValue.current = heroName;
     lazyLog();
