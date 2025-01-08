@@ -40,6 +40,7 @@ export function Hero ({ hero }: Props) {
       <Link to={`/hero/${hero.id}`}>
         <HeroThumbnail>
           <img
+            data-testid="hero-thumbnail"
             src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
             alt=""
           />

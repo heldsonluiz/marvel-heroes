@@ -1,10 +1,12 @@
-import logo from "../../assets/logo.svg";
 import { HeaderContainer } from "./styles";
 
-export function HomeHeader () {
+interface HomeHeaderProps {
+  source: string
+}
+export function HomeHeader ({source}:HomeHeaderProps) {
   return (
     <HeaderContainer>
-      <img src={logo} alt="" />
+      <img src={source} alt="" data-testid="header-image"/>
       <h1>Explore o universo</h1>
       <span>
         Mergulhe no domínio deslumbrante de todos os personagens clássicos que

@@ -4,7 +4,7 @@ import { LoadingContainer } from "./styles";
 
 export function Loading () {
   return (
-    <LoadingContainer>
+    <LoadingContainer data-testid="progressbar">
       <Sentry />
       <strong>CARREGANDO</strong>
     </LoadingContainer>

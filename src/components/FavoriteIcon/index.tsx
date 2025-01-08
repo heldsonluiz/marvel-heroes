@@ -26,7 +26,7 @@ export function FavoriteIcon ({
 
   return (
     <FavoriteContainer>
-      <FavoriteButtonContainer onClick={handleClickAction}>
+      <FavoriteButtonContainer onClick={handleClickAction} data-active={active} data-testid="favorite-button">
         {active ? (
           <FavoriteButtonContainerOn />
         ) : (

@@ -19,11 +19,11 @@ export function ToggleIcon ({
   };
 
   return (
-    <ToggleIconContainer onClick={handleOnClickToggleIcon}>
+    <ToggleIconContainer onClick={handleOnClickToggleIcon} data-testid="toggle-button">
       {active ? (
-        <ToggleIconOn src={toggleOnIcon} alt="" />
+        <ToggleIconOn src={toggleOnIcon} alt="" data-testid="toggle-active"/>
       ) : (
-        <ToggleIconOff src={toggleOffIcon} alt="" />
+        <ToggleIconOff src={toggleOffIcon} alt="" data-testid="toggle-inactive"/>
       )}
     </ToggleIconContainer>
   );
