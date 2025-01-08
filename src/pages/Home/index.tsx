@@ -55,7 +55,6 @@ export function Home () {
       const orderByName = orderAZ ? `&orderBy=name` : "&orderBy=-name";
       const offSetValue = `&offset=${limit * (currentPage - 1)}`
 
-
       const { data } = await api.get(
         `/characters?${searchForName}${orderByName}${offSetValue}${authenticate()}&limit=20`
       );
@@ -115,7 +114,7 @@ export function Home () {
     if (!orderAZ) newHeroList = favoritesHeroes.sort((a, b) => b.name.localeCompare(a.name))
     else newHeroList = favoritesHeroes.sort((a, b) => a.name.localeCompare(b.name))
 
-    if (heroName.trim().length) newHeroList = newHeroList.filter(hero => hero.name.toLowerCase().includes(heroName.toLowerCase()) )
+    if (heroName.trim().length) newHeroList = newHeroList.filter(hero => hero.name.toLowerCase().startsWith(heroName.toLowerCase()) )
 
     setSortedHeroes(newHeroList)
   },[orderAZ, showOnlyFavorites, heroName])
