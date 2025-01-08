@@ -4,6 +4,15 @@ export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  span {
+    display: flex;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: ${(props) => props.theme["red-300"]};
+    margin-top: 4px;
+    text-align: center;
+  }
 `;
 
 export const SearchContainerForm = styled.form`

@@ -9,7 +9,9 @@ import {
 
 import heroiIcon from "../../assets/ic_heroi.svg";
 
-import { useCallback, useContext, useEffect, useState } from "react";
+import { debounce } from "lodash"
+
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { api, authenticate } from "../../services/api";
 
 import { HeroProps } from "../../components/Hero";
@@ -25,7 +27,7 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { FavoriteHeroesContext } from "../../contexts/FavoriteHeroesContext";
 
 export function Home () {
-  const { heroName, executeSearch } = useContext(SearchContext);
+  const { heroName } = useContext(SearchContext);
   const { isLoading, setLoading } = useContext(LoadingContext);
   const { favoritesHeroes } = useContext(FavoriteHeroesContext);
 
@@ -33,14 +35,15 @@ export function Home () {
   const [orderAZ, setOrderAZ] = useState(true);
   const [totalHeroes, setTotalHeroes] = useState(0);
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("")
 
   const requestCharacters = useCallback(async () => {
-    if (heroes.length && !executeSearch) return;
 
     try {
       setLoading(true);
-      const searchForName = heroName ? `nameStartsWith=${heroName}` : "";
+      const searchForName = heroName ? `nameStartsWith=${encodeURIComponent(heroName)}` : "";
       const orderByName = orderAZ ? `&orderBy=name` : "&orderBy=-name";
+
 
       const { data } = await api.get(
         `/characters?${searchForName}${orderByName}${authenticate()}&limit=20`
@@ -50,9 +53,12 @@ export function Home () {
       setTotalHeroes(data.data.total);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
+      setHeroes([]);
+      setTotalHeroes(0);
       console.log(error);
     }
-  }, [orderAZ, executeSearch]);
+  }, [orderAZ, searchTerm]);
 
   const onChangeOrderAZ = () => {
     setLoading(true);
@@ -66,7 +72,9 @@ export function Home () {
   };
 
   const filteredHeroList: HeroProps[] = showOnlyFavorites
-    ? favoritesHeroes
+    ? heroName
+      ? favoritesHeroes.filter(hero => hero.name.toLowerCase().includes(heroName.toLowerCase()) )
+      : favoritesHeroes
     : heroes;
 
   const filteredTotalHeroes = showOnlyFavorites
@@ -76,6 +84,21 @@ export function Home () {
   useEffect(() => {
     requestCharacters();
   }, [orderAZ, requestCharacters]);
+
+
+  const refValue = useRef(searchTerm);
+  const lazyLog = useCallback(
+    debounce(() => {
+      setSearchTerm(refValue.current)
+    }, 500),
+    []
+  );
+
+  useEffect(() => {
+    refValue.current = heroName;
+    lazyLog();
+  }, [heroName]);
+
 
   return (
     <HomeContainer>
