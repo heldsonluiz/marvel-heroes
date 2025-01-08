@@ -41,7 +41,7 @@ export function Home () {
 
   const limit = 20
 
-  const [currentPage, setCurrentPage] = useState(78)
+  const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
 
   const [sortedHeroes, setSortedHeroes] = useState<HeroProps[]>([])
