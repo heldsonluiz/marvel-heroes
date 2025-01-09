@@ -30,7 +30,7 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { FavoriteHeroesContext } from "../../contexts/FavoriteHeroesContext";
 
 export function Home () {
-  const { heroName } = useContext(SearchContext);
+  const { searchTerm } = useContext(SearchContext);
   const { isLoading, setLoading } = useContext(LoadingContext);
   const { favoritesHeroes } = useContext(FavoriteHeroesContext);
 
@@ -38,7 +38,6 @@ export function Home () {
   const [orderAZ, setOrderAZ] = useState(true);
   const [totalHeroes, setTotalHeroes] = useState(0);
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("")
 
   const limit = 20
 
@@ -49,9 +48,11 @@ export function Home () {
 
   const requestCharacters = useCallback(async () => {
     try {
+      if(showOnlyFavorites) return
+
       setLoading(true);
 
-      const searchForName = heroName ? `nameStartsWith=${encodeURIComponent(heroName)}` : "";
+      const searchForName = searchTerm ? `nameStartsWith=${encodeURIComponent(searchTerm)}` : "";
       const orderByName = orderAZ ? `&orderBy=name` : "&orderBy=-name";
       const offSetValue = `&offset=${limit * (currentPage - 1)}`
 
@@ -80,7 +81,6 @@ export function Home () {
 
   const onFilterFavorites = () => {
     setCurrentPage(1)
-    setSearchTerm("")
     setShowOnlyFavorites(
       (showOnlyFavorites) => (showOnlyFavorites = !showOnlyFavorites)
     );
@@ -114,10 +114,10 @@ export function Home () {
     if (!orderAZ) newHeroList = favoritesHeroes.sort((a, b) => b.name.localeCompare(a.name))
     else newHeroList = favoritesHeroes.sort((a, b) => a.name.localeCompare(b.name))
 
-    if (heroName.trim().length) newHeroList = newHeroList.filter(hero => hero.name.toLowerCase().startsWith(heroName.toLowerCase()) )
+    if (searchTerm.trim().length) newHeroList = newHeroList.filter(hero => hero.name.toLowerCase().startsWith(searchTerm.toLowerCase()) )
 
     setSortedHeroes(newHeroList)
-  },[orderAZ, showOnlyFavorites, heroName])
+  },[orderAZ, showOnlyFavorites, searchTerm])
 
   useEffect(() => {
     requestCharacters();
@@ -129,23 +129,9 @@ export function Home () {
     setTotalPages(totalPages)
   }, [totalHeroes])
 
-  const refValue = useRef(searchTerm);
-  const lazyLog = useCallback(
-    debounce(() => {
-      setSearchTerm(refValue.current)
-    }, 500),
-    []
-  );
-
-  useEffect(() => {
-    refValue.current = heroName;
-    lazyLog();
-  }, [heroName]);
-
   return (
     <HomeContainer>
       <HomeHeader source={headerLogo} />
-
       <SearchBar />
 
       <HomeContent>
@@ -182,13 +168,12 @@ export function Home () {
           <Loading />
         ) : (
           <>
-
             <HeroList heroes={filteredHeroList} />
           </>
         )}
 
         {
-          !showOnlyFavorites &&
+          !showOnlyFavorites || !isLoading &&
           <PaginationContainer>
             <PaginationLinks onClick={goToPrevPage} $disabled={disablePrevLink}>&lt;&lt;</PaginationLinks>
             <span>Página {currentPage} de {totalPages}</span>

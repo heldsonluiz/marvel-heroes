@@ -38,7 +38,7 @@ export const SearchInputContainer = styled.input`
   color: ${(props) => props.theme["red-300"]};
   font-weight: bold;
   font-size: 0.875rem;
-  padding-left: 80px;
+  padding-inline: 80px;
 
   &::placeholder,
   &::-webkit-input-placeholder {
@@ -54,3 +54,16 @@ export const SearchInputIcon = styled.img`
   position: absolute;
   left: 30px;
 `;
+
+export const ClearSearchInputIcon = styled.div`
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 20px;
+  cursor: pointer;
+`

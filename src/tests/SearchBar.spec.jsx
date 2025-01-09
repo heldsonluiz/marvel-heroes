@@ -5,12 +5,12 @@ import { SearchContext } from "../contexts/SearchContext";
 describe("Test for SearchBar Component", () => {
   const mockUpdateSearchTerm = jest.fn();
 
-  const renderSearchBar = (heroName) => {
+  const renderSearchBar = (searchValue) => {
     render(
       <SearchContext.Provider
         value={{
-          heroName,
-          updateSearchTerm: mockUpdateSearchTerm,
+          searchValue,
+          updateSearchValue: mockUpdateSearchTerm,
         }}
       >
         <SearchBar />
@@ -59,4 +59,18 @@ describe("Test for SearchBar Component", () => {
 
     expect(mockUpdateSearchTerm).toHaveBeenCalledWith("Spider-Man");
   });
+
+   it("should clear the search input value when clear icon is clicked", () => {
+    renderSearchBar("Spider-Man");
+
+    const searchInput = screen.getByTestId("search-input");
+    const clearInputIcon = screen.getByTestId("clear-input-icon");
+
+    expect(searchInput).toHaveValue("Spider-Man");
+
+    fireEvent.click(clearInputIcon);
+
+    expect(mockUpdateSearchTerm).toHaveBeenCalledWith("");
+  });
+
 });

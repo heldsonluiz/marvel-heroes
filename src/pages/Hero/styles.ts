@@ -141,14 +141,16 @@ export const HeroLastComics = styled.div`
 
 export const ComicsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(133px, 133px));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(138px, 138px));
+  gap: 3rem;
   justify-content: center;
 `;
 
 export const ComicsGridItem = styled.div`
+  padding: 4px;
   img {
-    width: 100%;
+    width: 130px;
+    height: 190px;
   }
 
   span {
