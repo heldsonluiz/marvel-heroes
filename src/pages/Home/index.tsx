@@ -106,6 +106,8 @@ export function Home () {
   const disableNextLink = (currentPage + 1) > totalPages
   const disablePrevLink = (currentPage - 1) <= 0
 
+  const showPagination = !showOnlyFavorites && isLoading
+
   useEffect(() => {
     setCurrentPage(1)
     let newHeroList:HeroProps[] = []
@@ -172,7 +174,7 @@ export function Home () {
         )}
 
         {
-          !showOnlyFavorites || !isLoading &&
+          !showPagination &&
           <PaginationContainer>
             <PaginationLinks onClick={goToPrevPage} $disabled={disablePrevLink}>&lt;&lt;</PaginationLinks>
             <span>Página {currentPage} de {totalPages}</span>
