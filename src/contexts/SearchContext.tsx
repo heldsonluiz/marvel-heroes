@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDebounce } from "../hooks/useDebounce";
 
 interface SearchContextType {
-  heroName: string;
-  updateSearchTerm: (term: string) => void;
+  searchValue: string;
+  searchTerm: string;
+  updateSearchValue: (term: string) => void;
 }
 export const SearchContext = createContext({} as SearchContextType);
 
@@ -13,21 +15,24 @@ interface SearchContextProviderProps {
 export function SearchContextProvider ({
   children
 }: SearchContextProviderProps) {
-  const [heroName, setHeroName] = useState("");
+  const [searchValue, setSeachValue] = useState("");
+  const searchTerm = useDebounce(searchValue)
+
   const navigate = useNavigate();
 
-  const updateSearchTerm = (term: string) => {
+  const updateSearchValue = (term: string) => {
     setTimeout(()=>{
       navigate("/")
-    }, 550)
-    setHeroName(term);
+    }, 1500)
+    setSeachValue(term)
   };
 
   return (
     <SearchContext.Provider
       value={{
-        heroName,
-        updateSearchTerm
+        searchValue,
+        searchTerm,
+        updateSearchValue
       }}
     >
       {children}
