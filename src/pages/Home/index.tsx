@@ -48,7 +48,7 @@ export function Home () {
 
   const requestCharacters = useCallback(async () => {
     try {
-      if(showOnlyFavorites) return
+      if (showOnlyFavorites) return
 
       setLoading(true);
 

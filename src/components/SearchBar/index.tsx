@@ -23,7 +23,7 @@ export function SearchBar () {
   }
 
   const handleClearSearchValue = () => {
-    if(searchValue) updateSearchValue("")
+    if (searchValue) updateSearchValue("")
   }
 
   return (
