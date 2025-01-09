@@ -11,10 +11,9 @@ import {
 
 import heroiIcon from "../../assets/ic_heroi.svg";
 
-import { debounce } from "lodash"
 import headerLogo from "../../assets/logo.svg";
 
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { api, authenticate } from "../../services/api";
 
 import { HeroProps } from "../../components/Hero";
